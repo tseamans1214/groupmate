@@ -1,0 +1,108 @@
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clear {
+   clear: both;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+body {
+    background-color: black;
+    font-size: 62.5%;
+}
+
+h1 {
+    font-size: 3.0em;
+}
+
+h2 {
+    font-size: 2.5em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+
+nav, div, input, label {
+    font-size: 2.0em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-button {
+    position: absolute;
+    padding: 20px 40px 20px 40px;
+    left:0;
+    top:0;
+    color: white;
+    border: 2px solid white;
+}
+.back-button:hover {
+    background-color: purple;
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: white;
+    width: 50%;
+}
+
+.menu-component {
+    width: 100%;
+    text-align: center;
+    color: white;
+
+}
+
+.menu-button {
+    border: solid 2px white;
+}
+
+.menu-button:hover {
+    cursor: pointer;
+    background-color: purple;
+}
+
+.menu-title {
+    color: white;
+}
+
+.menu-subtitle {
+    color: white;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+label {
+    color: white;
+}
