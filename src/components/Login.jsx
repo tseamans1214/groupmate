@@ -1,9 +1,9 @@
 import React from "react";
-
+import {Link} from 'react-router-dom'
 function Login() {
     return (
         <>
-            <div className="back-button">&#8249;</div>
+            <Link to="/" className="back-button">&#8249;</Link>
             <section className="menu">
                 <h1 className="menu-component menu-title">Groupmate</h1>
                 <h2 className="menu-component menu-subtitle">Login</h2>

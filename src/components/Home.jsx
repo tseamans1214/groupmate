@@ -1,13 +1,12 @@
 import React from "react";
-
+import {Link} from 'react-router-dom'
 function Home() {
     return (
         <>
-            <div className="back-button">&#8249;</div>
             <section className="menu">
                 <h1 className="menu-component menu-title">Groupmate</h1>
-                <div className="menu-component menu-button">Login</div>
-                <div className="menu-component menu-button">Sign Up</div>
+                <Link to="/login" className="menu-component menu-button">Login</Link>
+                <Link to="/signup" className="menu-component menu-button">Signup</Link>
             </section>
         </>
     );
