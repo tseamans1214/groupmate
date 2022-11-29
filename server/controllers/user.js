@@ -1,18 +1,21 @@
+const passport = require("passport");
+const validator = require("validator");
+const User = require("../models/User");
 const users = [];
 
 exports.hello = (req, res) => {
     res.json({"users": ["userOne", "userTwo", "userThree"]});
 };
 
-exports.postUser = (req, res) => {
+exports.postUser = (req, res, next) => {
     const user = new User({
-        userName: req.body.userName,
+        userName: req.body.username,
         email: req.body.email,
         password: req.body.password,
       });
     users.push(user);
-    console.log("user added");
-    res.redirect("localhost:3000/account-home");
+    console.log(users);
+    res.redirect("/account-home");
 }
 
 exports.getUser = (req, res) => {
@@ -21,6 +24,5 @@ exports.getUser = (req, res) => {
             res.json(users[i]);
         }
     }
-    console.log("User not found");
-    res.redirect("localhost:3000/");
+    res.redirect("/account-home");
 }

@@ -7,7 +7,7 @@ function Signup() {
             <section className="menu">
                 <h1 className="menu-component menu-title">Groupmate</h1>
                 <h2 className="menu-component menu-subtitle">Signup</h2>
-                <form className="signup-form" action="http://localhost:5000/api/user" method="post">
+                <form className="signup-form" action="/api/user" method="post">
                     <label className="form-component" for="username">Username:</label>
                     <input className="form-component" type="text" id="susername" name="username" placeholder="username"></input>
                     
