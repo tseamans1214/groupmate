@@ -7,7 +7,7 @@ function CreateGroup() {
             <section className="menu">
                 <h1 className="menu-component menu-title">Groupmate</h1>
                 <h2 className="menu-component menu-subtitle">Create Group</h2>
-                <form className="create-group-form" action="/account-home">
+                <form className="create-group-form" action="/account-home" method="post">
                     <label className="form-component" for="group-name">Group Name:</label>
                     <input className="form-component" type="text" id="group-name" name="group-name" placeholder="Group Name"></input>
   
