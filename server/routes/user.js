@@ -7,13 +7,13 @@ const { ensureAuth } = require("../middleware/auth");
 
 
 //router.get('/api', hello.hello);
-router.post('/api/user', userController.postUser);
+//router.post('/api/user', userController.postUser);
 
 //Routes for user login/signup
 // router.get("/login", authController.getLogin);
 // router.post("/login", authController.postLogin);
 // router.get("/logout", authController.logout);
-// router.get("/signup", authController.getSignup);
-// router.post("/signup", authController.postSignup);
+router.post("/api/user/login", authController.postLogin);
+router.post("/api/user/signup", authController.postSignup);
 
 module.exports = router;

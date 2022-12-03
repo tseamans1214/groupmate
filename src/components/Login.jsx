@@ -7,7 +7,7 @@ function Login() {
             <section className="menu">
                 <h1 className="menu-component menu-title">Groupmate</h1>
                 <h2 className="menu-component menu-subtitle">Login</h2>
-                <form className="login-form" action="/account-home">
+                <form className="login-form" action="/api/user/login" method="POST">
                     <label className="form-component" for="email">Email:</label>
                     <input className="form-component" type="email" id="lemail" name="email" placeholder="email"></input>
 
