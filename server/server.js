@@ -46,6 +46,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', require('./routes/user'));
+app.use('/', require('./routes/group'));
 // app.get("/api", (req, res) => {
 //     res.json({"users": ["userOne", "userTwo", "userThree"]});
 // });

@@ -1,6 +1,31 @@
 import React from "react";
 import {Link} from 'react-router-dom'
+import {useEffect, useState} from 'react';
 function AccountHome() {
+    const [groups, setGroups] = useState([{}]);
+    const groupSections = [];
+
+    useEffect(() => {
+      fetch("/api/group/getGroups").then(
+        response => response.json()
+      ).then(
+        data => {
+          setGroups(data);
+        }
+      )
+      //console.log(groups[0]);
+      //groupSections = [];
+    }, []);
+
+    for (let i=0; i<groups.length; i++) {
+        groupSections.push(
+            <div key={groups[i]._id} className="account-groups-row">
+                        <Link to={groups[i]._id} className="account-groups-col1">pic</Link>
+                        <Link to={groups[i]._id} className="account-groups-col2">{groups[i].groupName}</Link>
+            </div>
+        )
+        console.log("group added");
+      }
     return (
         <>
             <Link to="/account-settings" className="back-button">Account Settings</Link>
@@ -15,6 +40,7 @@ function AccountHome() {
                         <Link to="/join-group" className="account-groups-col1">+</Link>
                         <Link to="/join-group" className="account-groups-col2">Join Group</Link>
                     </div>
+                    {groupSections}
                 </div>
             </section>
         </>
