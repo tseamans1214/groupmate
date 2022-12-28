@@ -13,6 +13,7 @@ const { ensureAuth } = require("../middleware/auth");
 // router.get("/login", authController.getLogin);
 // router.post("/login", authController.postLogin);
 // router.get("/logout", authController.logout);
+router.get("/api/user/login", authController.getLogin);
 router.post("/api/user/login", authController.postLogin);
 router.post("/api/user/signup", authController.postSignup);
 

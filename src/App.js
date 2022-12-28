@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import AccountHome from "./components/AccountHome";
 import CreateGroup from "./components/CreateGroup";
 import JoinGroup from "./components/JoinGroup";
+import Group from "./components/Group";
 import AccountSettings from "./components/AccountSettings";
 
 import {useEffect, useState} from 'react';
@@ -15,6 +16,7 @@ import {useEffect, useState} from 'react';
 function App() {
 
   const [backendData, setBackendData] = useState([{}]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     // fetch("/api").then(
@@ -36,12 +38,13 @@ function App() {
       )}
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/signup' element={<Signup />}/>
+        <Route path='/login' element={<Login setUser/>}/>
+        <Route path='/signup' element={<Signup setUser/>}/>
         <Route path='/account-home' element={<AccountHome />}/>
         <Route path='/account-settings' element={<AccountSettings />}/>
         <Route path='/create-group' element={<CreateGroup />}/>
         <Route path='/join-group' element={<JoinGroup />}/>
+        <Route path='/group' element={<Group />}/>
       </Routes>
     </div>
   );
