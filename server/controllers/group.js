@@ -16,7 +16,7 @@ module.exports = {
     },
     createGroup: async (req, res)=>{
         try{
-            await Group.create({groupname: req.body.groupname, userId: req.user.id, members: []});
+            await Group.create({groupname: req.body.groupname, creatorid: req.user.id, members: []});
             console.log('Group has been added!');
             res.redirect('/account-home');
         }catch(err){
