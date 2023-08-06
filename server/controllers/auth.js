@@ -5,8 +5,10 @@ const User = require("../models/User");
 exports.getLogin = (req, res) => {
   if (req.user) {
     //res.json(req.user);
+    //console.log(req.user);
+    return res.json(req.user);
     //return res.redirect(`/account-home?=${req.user._id}`);
-    return res.redirect("/account-home");
+    //return res.redirect("/account-home");
   }
   res.redirect("/login");
   // res.render("login", {
@@ -46,7 +48,9 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
+      console.log("Success! User logged in.");
       res.redirect(req.session.returnTo || "/account-home");
+      console.log("After redirect to account-home");
     });
   })(req, res, next);
 };
@@ -100,7 +104,7 @@ exports.postSignup = async (req, res, next) => {
   });
 
   const user = new User({
-    userName: req.body.suserName,
+    username: req.body.susername,
     email: req.body.semail,
     password: req.body.spassword,
   });
