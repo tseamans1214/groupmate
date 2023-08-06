@@ -16,11 +16,14 @@ exports.getLogin = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
-  if (!validator.isEmail(req.body.email))
+  if (!validator.isEmail(req.body.email)){
+    console.log("Please enter a valid email address");
     validationErrors.push({ msg: "Please enter a valid email address." });
-  if (validator.isEmpty(req.body.password))
+  }
+  if (validator.isEmpty(req.body.password)) {
+    console.log("Password cannot be blank");
     validationErrors.push({ msg: "Password cannot be blank." });
-
+  }
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
     return res.redirect("/login");
@@ -34,6 +37,7 @@ exports.postLogin = (req, res, next) => {
       return next(err);
     }
     if (!user) {
+      console.log("Authentication failed");
       req.flash("errors", info);
       return res.redirect("/login");
     }
@@ -69,7 +73,7 @@ exports.getSignup = (req, res) => {
   // });
 };
 
-exports.postSignup = (req, res, next) => {
+exports.postSignup = async (req, res, next) => {
   console.log("Post Signup");
   const validationErrors = [];
   if (!validator.isEmail(req.body.semail)) {
@@ -101,31 +105,52 @@ exports.postSignup = (req, res, next) => {
     password: req.body.spassword,
   });
 
-  User.findOne(
-    { $or: [{ email: req.body.semail }, { userName: req.body.suserName }] },
-    (err, existingUser) => {
-      if (err) {
-        return next(err);
-      }
-      if (existingUser) {
-        console.log("Account with that email already exists");
+  existingUser = await User.findOne({email: req.body.semail}).exec();
+
+  if (existingUser) {
+      console.log(`Account with that email ${existingUser.email} already exists`);
         req.flash("errors", {
-          msg: "Account with that email address or username already exists.",
+          msg: "Account with that email address already exists.",
         });
-        return res.redirect("/signup");
-      }
-      user.save((err) => {
-        if (err) {
-          return next(err);
-        }
-        req.logIn(user, (err) => {
+      return res.redirect("/signup");
+  }
+  user.save((err) => {
           if (err) {
             return next(err);
           }
-          console.log("signup successfull");
-          res.redirect("/account-home");
-        });
-      });
-    }
-  );
+          req.logIn(user, (err) => {
+            if (err) {
+              return next(err);
+            }
+            console.log("signup successfull");
+            res.redirect("/account-home");
+          });
+  });
+  // User.findOne(
+  //   { $or: [{ email: req.body.semail }, { userName: req.body.suserName }] },
+  //   (err, existingUser) => {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     if (existingUser) {
+  //       console.log(`Account with that email ${existingUser.email} already exists`);
+  //       req.flash("errors", {
+  //         msg: "Account with that email address or username already exists.",
+  //       });
+  //       return res.redirect("/signup");
+  //     }
+  //     user.save((err) => {
+  //       if (err) {
+  //         return next(err);
+  //       }
+  //       req.logIn(user, (err) => {
+  //         if (err) {
+  //           return next(err);
+  //         }
+  //         console.log("signup successfull");
+  //         res.redirect("/account-home");
+  //       });
+  //     });
+  //   }
+  // );
 };
