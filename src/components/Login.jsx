@@ -23,10 +23,10 @@ function Login() {
                 <h2 className="menu-component menu-subtitle">Login</h2>
                 {/* <form className="login-form" action={() => userLogin()} method="POST"> */}
                 <form className="login-form" action="/api/user/login" method="POST">
-                    <label className="form-component" for="email">Email:</label>
+                    <label className="form-component" htmlFor="email">Email:</label>
                     <input className="form-component" type="email" id="lemail" name="email" placeholder="email"></input>
 
-                    <label className="form-component" for="password">Password:</label>
+                    <label className="form-component" htmlFor="password">Password:</label>
                     <input className="form-component" type="password" id="lpassword" name="password" placeholder="password"></input>
   
                     <input className="form-component submit-button" type="submit" value="Login"></input>
