@@ -5,7 +5,7 @@ module.exports = {
         console.log(req.user);
         try{
             const groupItems = await Group.find({userId:req.user.id});
-            const itemsLeft = await Group.countDocuments({userId:req.user.id,completed: false});
+            //const itemsLeft = await Group.countDocuments({userId:req.user.id,completed: false});
             console.log("Group Items");
             console.log(groupItems);
             res.json(groupItems);
@@ -16,7 +16,7 @@ module.exports = {
     },
     createGroup: async (req, res)=>{
         try{
-            await Group.create({groupName: req.body.groupName, userId: req.user.id, members: []});
+            await Group.create({groupname: req.body.groupname, userId: req.user.id, members: []});
             console.log('Group has been added!');
             res.redirect('/account-home');
         }catch(err){

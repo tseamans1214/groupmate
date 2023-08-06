@@ -18,6 +18,7 @@ function AccountHome() {
         response => response.json()
       ).then(
         data => {
+          console.log("User Set");
           setUser(data);
         }
       );
@@ -29,7 +30,7 @@ function AccountHome() {
         groupSections.push(
             <div key={groups[i]._id} className="account-groups-row">
                         <Link to={"/group"} className="account-groups-col1">pic</Link>
-                        <Link to={"/group/" + groups[i]._id} className="account-groups-col2">{groups[i].groupName}</Link>
+                        <Link to={"/group/" + groups[i]._id} className="account-groups-col2">{groups[i].groupname}</Link>
             </div>
         )
         console.log("group added");
@@ -38,7 +39,7 @@ function AccountHome() {
         <>
             <Link to="/account-settings" className="back-button">Account Settings</Link>
             <section className="account-home">
-                <h1 className="account-title">Welcome, {user ? user.email : "Username"}</h1>
+                <h1 className="account-title">Welcome, {user ? user.username : "Username"}</h1>
                 <div className="account-groups">
                     <div className="account-groups-row">
                         <Link to="/create-group" className="account-groups-col1">+</Link>

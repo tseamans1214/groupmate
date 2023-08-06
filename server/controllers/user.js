@@ -9,7 +9,7 @@ exports.hello = (req, res) => {
 
 exports.postUser = (req, res, next) => {
     const user = new User({
-        userName: req.body.susername,
+        username: req.body.susername,
         email: req.body.email,
         password: req.body.password,
       });
